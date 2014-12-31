@@ -39,10 +39,10 @@ module VagrantPlugins
           @nodes ||= with_target_vms{}.each_with_object({}) do |machine, hash|
             raise Vagrant::Errors::SSHNotReady unless machine.ssh_info
             hash[machine.name.to_s] = {
-              ssh_user:     'vagrant',
-              ssh_host:     machine.provider.driver.read_guest_ip(1),
-              ssh_port:     22,
-              ssh_key_file: machine.ssh_info[:private_key_path].first
+              ssh_user:             'vagrant',
+              ssh_host:             machine.provider.driver.read_guest_ip(1),
+              ssh_port:             22,
+              ssh_private_key_file: machine.ssh_info[:private_key_path].first
             }
           end
         end
