@@ -20,7 +20,7 @@ module VagrantPlugins
           imp  = (nodes.keys - exp.values.flatten)
 
           # Assign grouped nodes to inventory
-          imp.each{|gname| inv[gname] = nodes[gname] }
+          imp.each{|gname| inv[gname] = nodes[gname].merge id: gname }
           exp.each{|gname, gnodes| inv[gname] = gnodes.map{|n| nodes[n].merge id: n }}
           meta.each{|gname, gnames| inv[gname] = gnames }
 
@@ -59,7 +59,7 @@ module VagrantPlugins
             out <<  "[#{group_name}]\n"
 
             if children.kind_of? Hash
-              out << "#{node_attrs(:ssh_host, children)}\n"
+              out << "#{node_attrs(:id, children)}\n"
             else
               children.each do |child|
                 out << "#{(child.kind_of?(Hash) ? node_attrs(:id, child) : child)}\n"
