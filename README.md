@@ -51,15 +51,15 @@ Will output something like:
 
     [master]
     172.28.128.6 ansible_ssh_user=vagrant ansible_ssh_port=22
-    ansible_ssh_key_file=/Users/joiggama/Projects/vagrant-ansible_inventory/.vagrant/machines/master/virtualbox/private_key
+    ansible_ssh_private_key_file=/Users/joiggama/Projects/vagrant-ansible_inventory/.vagrant/machines/master/virtualbox/private_key
 
     [slaves]
     slave-1 ansible_ssh_user=vagrant ansible_ssh_host=172.28.128.7
     ansible_ssh_port=22
-    ansible_ssh_key_file=/Users/joiggama/Projects/vagrant-ansible_inventory/.vagrant/machines/slave-1/virtualbox/private_key
+    ansible_ssh_private_key_file=/Users/joiggama/Projects/vagrant-ansible_inventory/.vagrant/machines/slave-1/virtualbox/private_key
     slave-2 ansible_ssh_user=vagrant ansible_ssh_host=172.28.128.8
     ansible_ssh_port=22
-    ansible_ssh_key_file=/Users/joiggama/Projects/vagrant-ansible_inventory/.vagrant/machines/slave-2/virtualbox/private_key
+    ansible_ssh_private_key_file=/Users/joiggama/Projects/vagrant-ansible_inventory/.vagrant/machines/slave-2/virtualbox/private_key
 
     [cluster:children]
     master
