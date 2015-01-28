@@ -10,7 +10,7 @@ module VagrantPlugins
         end
 
         def finalize!
-          @groups = 0 if @groups == UNSET_VALUE
+          @groups = {} if @groups == UNSET_VALUE
         end
 
       end
