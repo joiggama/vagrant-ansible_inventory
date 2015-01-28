@@ -8,10 +8,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ['Ignacio Galindo']
   spec.email         = ['joiggama@gmail.com']
   spec.summary       = %q{Vagrant plugin for building ansible inventory files.}
-  spec.description   = %{
-                          Helps defining and building ansible inventory files
-                          programatically via configuration and command modules.
-                       }.strip
+  spec.description   = %q{Helps defining and building ansible inventory files programatically via configuration and command modules.}
   spec.homepage      = 'https://github.com/joiggama/vagrant-ansible_inventory'
   spec.license       = 'MIT'
 
