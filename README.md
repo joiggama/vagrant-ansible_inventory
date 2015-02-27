@@ -75,4 +75,4 @@ Will output something like:
 
 ## License
 
-[The MIT licence](LICENSE.txt)
+[The MIT licence](LICENSE.md)
