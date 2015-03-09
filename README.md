@@ -1,5 +1,7 @@
 # Vagrant::AnsibleInventory
 
+[![Join the chat at https://gitter.im/joiggama/vagrant-ansible_inventory](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/joiggama/vagrant-ansible_inventory?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 Vagrant plugin for building ansible inventory files.
 
 Helps defining and building ansible inventory files programatically via
