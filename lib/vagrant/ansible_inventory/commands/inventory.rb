@@ -31,6 +31,26 @@ module VagrantPlugins
           @config ||= with_target_vms{}.first.config
         end
 
+        def detect_ip_address(machine)
+          if machine.guest.name == :coreos
+            detect_coreos_ip_address(machine)
+          else
+            machine.provider.driver.read_guest_ip(1)
+          end
+        end
+
+        def detect_coreos_ip_address(machine)
+          private_ipv4 = nil
+
+          machine.communicate.tap do |comm|
+            comm.sudo('ifconfig eth1') do |_,result|
+              private_ipv4 = result.scan(%r{inet \d+\.\d+\.\d+.\d+ }).first.split(' ').last
+            end
+          end
+
+          private_ipv4
+        end
+
         def groups
           @groups ||= config.ansible.groups
         end
@@ -40,7 +60,7 @@ module VagrantPlugins
             raise Vagrant::Errors::SSHNotReady unless machine.ssh_info
             hash[machine.name.to_s] = {
               ssh_user:             'vagrant',
-              ssh_host:             machine.provider.driver.read_guest_ip(1),
+              ssh_host:             detect_ip_address(machine),
               ssh_port:             22,
               ssh_private_key_file: machine.ssh_info[:private_key_path].first
             }

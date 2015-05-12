@@ -1,0 +1,26 @@
+Vagrant.configure(2) do |config|
+
+  config.ssh.insert_key = false
+
+  config.vm.box     = 'coreos-633.1.0'
+  config.vm.box_url = 'http://stable.release.core-os.net/amd64-usr/633.1.0/coreos_production_vagrant.box'
+
+  config.ansible.groups = {
+    'cluster' => []
+  }
+
+  config.vm.provider :virtualbox do |vb|
+    vb.check_guest_additions = false
+    vb.functional_vboxsf     = false
+    vb.memory                = 256
+  end
+
+  (1..3).each do |instance|
+    config.vm.define node_name = "coreos-0#{instance}" do |node|
+      node.vm.hostname = node_name
+      node.vm.network 'private_network', type: :dhcp
+      config.ansible.groups['cluster'] << node_name
+    end
+  end
+
+end
