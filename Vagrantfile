@@ -11,9 +11,9 @@ Vagrant.configure(2) do |config|
     end
   }
 
-  define_vm.call 'master',  'trusty32', 256
-  define_vm.call 'slave-1', 'trusty32', 256
-  define_vm.call 'slave-2', 'trusty32', 256
+  define_vm.call 'master',  'ubuntu/trusty32', 256
+  define_vm.call 'slave-1', 'ubuntu/trusty32', 256
+  define_vm.call 'slave-2', 'ubuntu/trusty32', 256
 
   config.ansible.groups = {
     'cluster:children' => ['master', 'slaves'],
