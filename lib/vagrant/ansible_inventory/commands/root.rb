@@ -6,7 +6,7 @@ module VagrantPlugins
       class Root < Vagrant.plugin(2, :command)
 
         def self.synopsis
-          'display ansible inventory'
+          'build ansible inventory'
         end
 
         def initialize(argv, env)
@@ -36,9 +36,9 @@ module VagrantPlugins
 
         def help
           opts = OptionParser.new do |o|
-            o.banner = "Usage: vagrant ansible <subcommand> [<args>]"
-            o.separator ""
-            o.separator "Available subcommands:"
+            o.banner = 'Usage: vagrant ansible <subcommand> [<options>]'
+            o.separator ''
+            o.separator 'Available subcommands:'
 
             keys = []
             @subcommands.each { |key, value| keys << key.to_s }
