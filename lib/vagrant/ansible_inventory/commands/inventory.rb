@@ -114,7 +114,7 @@ module VagrantPlugins
           @implicit_groups.each do |group|
             host = @inventory[group][:ansible_ssh_host]
             groups[group] = [host]
-            vars = @inventory[group].except(:id, :ansible_ssh_host)
+            vars = @inventory[group].except(:id)
             hostvars[host] = vars
           end
 
@@ -124,7 +124,7 @@ module VagrantPlugins
             @inventory[name].each do |node|
               groups[name] << node[:ansible_ssh_host]
               host = node[:ansible_ssh_host]
-              vars = node.except(:id, :ansible_ssh_host)
+              vars = node.except(:id)
               hostvars[host] = vars
             end
           end
